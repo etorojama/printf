@@ -9,34 +9,33 @@
 #include <limits.h>
 
 /**
- * struct directives - holds fromat specifiers and their functions.
- * @spec: char
- * @fspec: function pointer.
+ * struct call - struct call
+ * @t: t - flag for data type
+ * @f: function - assocated function
  *
  */
 
-typedef struct directives
+typedef struct call
 {
-	char spec;
-	int (*fspec)(va_list, int);
-} forms;
+	char t;
+	int (*f)(char *, va_list, int);
+} call_t;
 
-int _putchar(char c);
 int _printf(const char *format, ...);
-int (*get_print_func(char c))(va_list, int);
-int print_ch(va_list, int);
-int print_str(va_list, int);
-int print_int(va_list, int);
-int _putchar_int(int, int);
-int print_numbers(unsigned long n, unsigned int base, const char *digits);
-unsigned int find_length(unsigned int, int);
-int print_hex(va_list args, int len);
-int print_heX(va_list args, int len);
-int print_unsignd(va_list args, int len);
-int print_octal(va_list args, int len);
-int print_rot13(va_list args, int len);
-int print_b(va_list args, int len);
-int print_binary(unsigned int, int);
-int print_Str(va_list args, int len);
+int buff_append(char *buff_dest, va_list arg, int buff_count, char type);
+int print_buff(char *buff, unsigned int nbuff);
+int str_len(char *s);
+char *_strcpy(char *dest, char *src);
+int parse_char(char *buff_dest, va_list arg, int buff_count);
+int parse_str(char *buff_dest, va_list arg, int buff_count);
+int parse_int(char *buff_dest, va_list list, int buff_count);
+int parse_perc(char *buff_dest, va_list arg, int buff_count);
+int parse_bin(char *buff_dest, va_list arg, int buff_count);
+int parse_oct(char *buff_dest, va_list arg, int buff_count);
+int parse_hex(char *buff_dest, va_list arg, int buff_count);
+int parse_X(char *buff_dest, va_list arg, int buff_count);
+int parse_uint(char *buff_dest, va_list arg, int buff_count);
+int parse_rev(char *buff_dest, va_list arg, int buff_count);
+int parse_R13(char *buff_dest, va_list arg, int buff_count);
 
 #endif
